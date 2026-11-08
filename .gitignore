@@ -1,0 +1,12 @@
+# Datos y claves reales (Mercado Pago, Analytics): nunca se suben
+config.php
+
+# Base de datos, sesiones y fotos subidas desde el panel
+data/*.sqlite*
+data/sessions/*
+!data/sessions/.htaccess
+uploads/*
+!uploads/.htaccess
+
+# Paquete para el hosting
+*.zip
