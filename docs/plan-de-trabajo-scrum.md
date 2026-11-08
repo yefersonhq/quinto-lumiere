@@ -9,6 +9,57 @@
 
 ---
 
+## Estado del proyecto (actualizado al 7 de noviembre de 2026)
+
+**Sprint en curso:** Sprint 1 (semana 1 de 12)
+**Historias terminadas:** 6 de 28 — 54 de 360 horas estimadas (15 %)
+
+`███░░░░░░░░░░░░░░░░░` 15 %
+
+| Estado | Cantidad | Historias |
+|---|---|---|
+| ✅ Terminado | 6 | HU-02, HU-03, HU-04, HU-05, HU-06, HU-07 |
+| 🔎 En revisión | 1 | HU-01 (espera aprobación de la Product Owner) |
+| 🔧 En progreso | 6 | HU-08, HU-09, HU-10, HU-15, HU-16, HU-18 |
+| ⏳ Pendiente | 15 | HU-11 a HU-14, HU-17, HU-19 a HU-28 |
+
+### ✅ Lo que ya está completado
+
+| Historia | Resultado |
+|---|---|
+| HU-02 Diseño | Base de datos (productos, variantes, pedidos, usuarios, reclamos) e interfaz con los colores y el logo de la marca |
+| HU-03 Catálogo | Catálogo público con filtros por categoría y marca, búsqueda tolerante a errores y ficha de producto con variantes |
+| HU-04 Cuentas y carrito | Registro, inicio de sesión, carrito, checkout con costos de envío y pedido por WhatsApp |
+| HU-05 Panel de administración | Roles administrador y cliente; inventario con fotos y variantes; pedidos, usuarios, reclamos y diagnóstico |
+| HU-06 Asistente y carta de colores | Asistente Lumi con búsquedas y recomendaciones; carta de colores con simulador, oxidante y combinaciones |
+| HU-07 Publicación | Tienda en <https://quintolumiere.gt.tc> con HTTPS y código en GitHub sin claves |
+
+Además ya están publicados: Términos y condiciones, Política de privacidad y Libro de Reclamaciones.
+
+### 🔧 Lo que está en progreso
+
+| Historia | Ya hecho | Falta |
+|---|---|---|
+| HU-01 Requisitos | Requisitos levantados y Product Backlog priorizado | Aprobación de la Product Owner en la Sprint Review (15 nov) |
+| HU-08 Pago con Mercado Pago | Integración programada (Checkout Pro, verificación por API, firma del webhook) | Credenciales de prueba y pruebas de pago |
+| HU-09 Stock al aprobar pago | Descuento único del stock y devolución al cancelar, programados | Probarlo con pagos de prueba |
+| HU-10 Google Analytics | Eventos de e-commerce programados (vistas, carrito, pago, compra, búsqueda, chatbot) | Crear la propiedad GA4 y configurar el ID |
+| HU-15 Logos de marcas | Logos de Avon, Natura y Yanbal | Ésika y las demás marcas |
+| HU-16 Búsqueda con errores | Sinónimos y tolerancia a errores en búsqueda y asistente | Ajustar con los productos reales |
+| HU-18 Seguridad | Contraseñas cifradas, protección CSRF, carpetas privadas bloqueadas, HTTPS | Revisión completa y copias de seguridad semanales |
+
+### ⏳ Lo que falta
+
+| Sprint | Historias pendientes |
+|---|---|
+| Sprint 2 (16 – 29 nov) | HU-11 Compras de prueba y paso a producción · HU-12 Correo de contacto real |
+| Sprint 3 (30 nov – 13 dic) | HU-13 Fotos reales · HU-14 Productos, precios y stock reales |
+| Sprint 4 (14 – 27 dic) | HU-17 Pruebas en celular y rendimiento · HU-19 Corrección de errores · HU-20 Campaña navideña |
+| Sprint 5 (28 dic – 10 ene) | HU-21 SEO y Google · HU-22 Vista previa en redes · HU-23 Enlaces en redes y Google · HU-24 Reporte mensual |
+| Sprint 6 (11 – 24 ene) | HU-25 Mejora del asistente · HU-26 Capacitación y manual · HU-27 Informe final · HU-28 Entrega formal |
+
+---
+
 ## 1. Objetivo del proyecto
 
 Desarrollar, desplegar y mantener una tienda en línea para Quinto Lumière que permita vender cosméticos y productos capilares por internet, con catálogo público, inventario administrable, pagos con Mercado Pago, cuentas de administrador y cliente, asistente virtual de búsqueda, carta de colores para tintes y medición con Google Analytics, cumpliendo la normativa peruana de protección al consumidor.

@@ -27,6 +27,16 @@ El proyecto se gestiona con **Scrum**: 6 sprints de 2 semanas (2 nov 2026 – 24
 - Plan de trabajo, cronograma semanal y registro de horas: [docs/plan-de-trabajo-scrum.md](docs/plan-de-trabajo-scrum.md)
 - Sprints: [Milestones](https://github.com/yefersonhq/quinto-lumiere/milestones) · Historias de usuario: [Issues](https://github.com/yefersonhq/quinto-lumiere/issues?q=label%3Ahistoria)
 
+### Avance (7 nov 2026 · Sprint 1)
+
+`███░░░░░░░░░░░░░░░░░` **15 %** — 6 de 28 historias terminadas
+
+- ✅ **Completado:** diseño, catálogo y búsqueda, cuentas y carrito, panel de administración con roles, asistente Lumi y carta de colores, publicación con HTTPS y GitHub, páginas legales.
+- 🔧 **En progreso:** Mercado Pago (programado, faltan credenciales y pruebas), Google Analytics (programado, falta el ID), logos de marcas, seguridad y copias de seguridad, aprobación de requisitos.
+- ⏳ **Falta:** compras de prueba, catálogo y fotos reales, pruebas de calidad, campaña navideña, SEO, redes, reportes, capacitación e informe final.
+
+Detalle completo en el [estado del proyecto](docs/plan-de-trabajo-scrum.md#estado-del-proyecto-actualizado-al-7-de-noviembre-de-2026).
+
 ### Funciones del desarrollador
 
 1. **Requisitos:** levantamiento con el negocio (catálogo, inventario, pagos, roles de usuario y normas peruanas: Libro de Reclamaciones, términos y privacidad).
