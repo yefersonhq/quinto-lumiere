@@ -21,6 +21,12 @@ En línea: <https://quintolumiere.gt.tc>
 | **Desarrollador de Software Full Stack** | Yeferson Huamán Quinto ([@yefersonhq](https://github.com/yefersonhq)) | Análisis, diseño, desarrollo, pruebas, despliegue y mantenimiento del sistema |
 | **Cliente / Dueña del producto** | Quinto Lumière (titular del negocio) | Definición de requisitos, catálogo, precios y validación de entregables |
 
+### Metodología
+
+El proyecto se gestiona con **Scrum**: 6 sprints de 2 semanas (2 nov 2026 – 24 ene 2027, 360 horas).
+- Plan de trabajo, cronograma semanal y registro de horas: [docs/plan-de-trabajo-scrum.md](docs/plan-de-trabajo-scrum.md)
+- Sprints: [Milestones](https://github.com/yefersonhq/quinto-lumiere/milestones) · Historias de usuario: [Issues](https://github.com/yefersonhq/quinto-lumiere/issues?q=label%3Ahistoria)
+
 ### Funciones del desarrollador
 
 1. **Requisitos:** levantamiento con el negocio (catálogo, inventario, pagos, roles de usuario y normas peruanas: Libro de Reclamaciones, términos y privacidad).
