@@ -18,7 +18,7 @@ En línea: <https://quintolumiere.gt.tc>
 
 | Rol | Persona | Responsabilidad |
 |---|---|---|
-| **Desarrollador de Software Full Stack** | Yeferson ([@yefersonhq](https://github.com/yefersonhq)) | Análisis, diseño, desarrollo, pruebas, despliegue y mantenimiento del sistema |
+| **Desarrollador de Software Full Stack** | Yeferson Huamán Quinto ([@yefersonhq](https://github.com/yefersonhq)) | Análisis, diseño, desarrollo, pruebas, despliegue y mantenimiento del sistema |
 | **Cliente / Dueña del producto** | Quinto Lumière (titular del negocio) | Definición de requisitos, catálogo, precios y validación de entregables |
 
 ### Funciones del desarrollador
