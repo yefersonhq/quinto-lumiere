@@ -26,7 +26,8 @@ const TONE_REFLECTS = [
 /** Extrae el código de tono de una etiqueta como «7.3 Rubio medio dorado». */
 function tone_parse(?string $label): ?array
 {
-    if (!$label || !preg_match('/^\s*(\d{1,2})[.,\/](\d{1,2})\b|^\s*(\d{1,2})\b(?![.,]?\d*\s*(ml|g|gr|cm|pulg|x))/iu', $label, $m)) return null;
+    // admite sufijos de marca pegados al código: 5.1NC, 5.4CH, 6.62RR, 4NB, 01N
+    if (!$label || !preg_match('/^\s*(\d{1,2})[.,\/](\d{1,2})(?!\d)|^\s*(\d{1,2})(?:\b|(?=[a-z]))(?![.,]?\d*\s*(ml|g|gr|cm|pulg|x)\b)/iu', $label, $m)) return null;
     $level = (int) ($m[1] !== '' ? $m[1] : $m[3]);
     $refl = isset($m[2]) && $m[2] !== '' ? $m[2] : '0';
     if ($level > 12) return null;

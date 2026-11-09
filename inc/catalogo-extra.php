@@ -635,6 +635,49 @@ function catalogo_extra_4(): array
     return $P;
 }
 
+/**
+ * Quinta tanda: carta oficial de Smoll Keratina & Aceite de Argán (sachet), 50 tonos
+ * leídos de la carta de la marca, con el color de cada muestra.
+ */
+function catalogo_extra_5(): array
+{
+    $s = fn(array $t) => array_map(fn($x) => ["{$x[0]} {$x[1]}", 4.50, 12, $x[2]], $t);
+    $desc = "Coloración en crema Smoll en sachet, enriquecida con keratina y aceite de argán: color intenso, brillo y cobertura de canas. Rinde una aplicación en cabello corto a medio.\nPídelo por unidad o por caja de 12. Pregúntanos el oxidante ideal para tu tono.";
+    $tags = 'tinte smoll sachet keratina aceite de argan coloracion crema permanente canas';
+    $P = [];
+    $P[] = ['Tinte Smoll Keratina & Argán sachet — Naturales', 'Smoll', 'tintes-sachet', $desc, "$tags naturales negro castaño rubio platino intenso",
+        $s([['01N', 'Negro azul', '#1f2626'], ['1', 'Negro', '#2b2a28'], ['3', 'Castaño oscuro', '#312d2c'], ['4', 'Castaño', '#453930'], ['5', 'Castaño claro', '#453327'],
+            ['6', 'Rubio oscuro', '#2d2515'], ['7', 'Rubio', '#765943'], ['8', 'Rubio claro', '#8e6b50'], ['9', 'Rubio clarísimo', '#ae9364'],
+            ['6.0', 'Rubio oscuro intenso', '#59493e'], ['7.0', 'Rubio intenso', '#6e5a40'], ['10.1', 'Platino', '#baae7c']]),
+        1, ['smoll-naturales', 'smoll-carta-naturales', 'smoll-carta']];
+    $P[] = ['Tinte Smoll Keratina & Argán sachet — Cenizos y dorados', 'Smoll', 'tintes-sachet', $desc, "$tags cenizo cenizos verdosos matizado dorado dorado menta rubio",
+        $s([['5.1NC', 'Castaño claro cenizo', '#60553f'], ['6.1NC', 'Rubio oscuro cenizo', '#6b5f47'], ['7.1NC', 'Rubio cenizo', '#7a704a'], ['8.1NC', 'Rubio claro cenizo', '#a29061'],
+            ['9.1NC', 'Rubio clarísimo cenizo', '#a3906b'], ['6.10', 'Rubio oscuro cenizo intenso', '#5a4f29'], ['7.10', 'Rubio cenizo intenso', '#76704b'],
+            ['7.11', 'Rubio cenizo profundo', '#82805e'], ['8.11', 'Rubio claro cenizo profundo', '#747457'], ['9.11', 'Rubio clarísimo cenizo profundo', '#a09e79'],
+            ['8.3TM', 'Rubio claro dorado menta', '#8c7c47'], ['5.3D', 'Castaño claro dorado', '#543821'], ['6.3D', 'Rubio oscuro dorado', '#6b5734'],
+            ['7.3D', 'Rubio dorado', '#ae8240'], ['8.3D', 'Rubio claro dorado', '#a78336'], ['9.3D', 'Rubio muy claro dorado', '#bc9c46']]),
+        0, ['smoll-cenizos-dorados', 'smoll-carta-cenizos', 'smoll-cenizos-verdosos', 'smoll-carta']];
+    $P[] = ['Tinte Smoll Keratina & Argán sachet — Chocolates', 'Smoll', 'tintes-sachet', $desc, "$tags chocolate chocolates encantados marron",
+        $s([['5.4CH', 'Chocolate', '#35211b'], ['5.68CH', 'Chocolate natural', '#482e24'], ['7.4CH', 'Chocolate mediano', '#6d4c3b'], ['8.4CH', 'Chocolate claro', '#724e3b'],
+            ['5.23CH', 'Chocolate intenso', '#51322c'], ['7.23CH', 'Chocolate intenso mediano', '#603b31'], ['5.35', 'Castaño claro chocolate', '#3c2e2a'],
+            ['6.73', 'Chocolate dorado', '#432c27'], ['8.73', 'Chocolate claro dorado', '#463831']]),
+        1, ['smoll-chocolates', 'smoll-carta-chocolates', 'smoll-carta']];
+    $P[] = ['Tinte Smoll Keratina & Argán sachet — Rojos y cobrizos', 'Smoll', 'tintes-sachet', $desc, "$tags rojo rojizo violeta granate borgoña ciruela cobre cobrizo caoba fuego",
+        $s([['RG', 'Rojo granate', '#401418'], ['RP', 'Rojo pasión', '#4c2524'], ['CARIBE', 'Caribe', '#772d2c'], ['4RF', 'Castaño mediano borgoña', '#2d1c25'],
+            ['4.88', 'Castaño rojizo', '#53141d'], ['6.62RR', 'Rubio rojo intenso', '#863037'], ['5.20', 'Ciruela', '#342336'], ['0006', 'Rojo fuego ardiente', '#3c1318'],
+            ['7.006', 'Rubio rojo fuego ardiente', '#6c2725'], ['5.7', 'Caoba cobrizo', '#4a2d1f'], ['6.37CB', 'Rubio oscuro dorado cobre', '#4c281f'],
+            ['0064', 'Rojo cobre fuego ardiente', '#6d1519'], ['6.6CB', 'Rubio caoba rojizo', '#652329']]),
+        0, ['smoll-rojos', 'smoll-carta-rojos', 'smoll-cobrizos', 'smoll-carta']];
+    return $P;
+}
+
+/** Tras la quinta tanda: oculta el sachet genérico de ejemplo de Smoll con amoníaco (si nunca se vendió). */
+function catalogo_extra_5_after(PDO $pdo): void
+{
+    $pdo->prepare('UPDATE products SET active = 0, updated_at = ? WHERE slug = ?
+                   AND NOT EXISTS (SELECT 1 FROM order_items o WHERE o.product_id = products.id)')->execute([now(), 'tinte-en-sachet-smoll-con-amoniaco']);
+}
+
 /** Tras la tercera tanda: oculta los tintes genéricos de ejemplo de Palette y Evolution (si nunca se vendieron). */
 function catalogo_extra_3_after(PDO $pdo): void
 {
@@ -652,6 +695,7 @@ function import_catalogo_extra(PDO $pdo): void
         'botx-mini-kit-capilar-lanosterin' => 'catalogo_extra_2',
         'fibra-kanekalon-para-trenzas-y-rastas-120-cm' => 'catalogo_extra_3',
         'desodorante-axe-aerosol-150-ml' => 'catalogo_extra_4',
+        'tinte-smoll-keratina-argan-sachet-naturales' => 'catalogo_extra_5',
     ];
     $st = $pdo->prepare('SELECT 1 FROM products WHERE slug = ?');
     foreach ($batches as $sentinel => $fn) {
@@ -685,7 +729,7 @@ function import_catalogo_batch(PDO $pdo, array $list): void
         'tintes-caja' => ['Tintes en caja', 'box'], 'cuidado-capilar' => ['Shampoo y cuidado capilar', 'bottle'],
         'tratamientos' => ['Tratamientos capilares', 'drop'], 'ampollas' => ['Ampollas', 'ampoule'],
         'shampoo-matizador' => ['Shampoo matizador', 'bottle'], 'extensiones' => ['Extensiones', 'hair'],
-        'desodorantes' => ['Desodorantes', 'spark'], 'unas' => ['Uñas', 'spark']];
+        'desodorantes' => ['Desodorantes', 'spark'], 'unas' => ['Uñas', 'spark'], 'tintes-sachet' => ['Tintes en sachet', 'sachet']];
 
     $exists = $pdo->prepare('SELECT id FROM products WHERE slug = ?');
     $hasImg = $pdo->prepare('SELECT 1 FROM product_images WHERE product_id = ?');
