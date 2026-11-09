@@ -539,6 +539,102 @@ function catalogo_extra_3(): array
     return $P;
 }
 
+/**
+ * Cuarta tanda (noviembre 2026): uñas Cherimoya (catálogo profesional; precios referenciales),
+ * desodorantes Axe, Dove, Rexona y Old Spice, y geles Moco de Gorila y Ego (precios de Plaza Vea Perú).
+ */
+function catalogo_extra_4(): array
+{
+    $P = [];
+    $v = fn(array $list, int $stock = 6) => array_map(fn($x) => [$x[0], $x[1], $x[2] ?? $stock, $x[3] ?? null], $list);
+
+    // ---------------- DESODORANTES ----------------
+    $P[] = ['Desodorante Axe aerosol 150 ml', 'Axe', 'desodorantes',
+        "Deocolonia en aerosol para hombre con protección de 48 horas y fragancias intensas. Elige tu aroma.",
+        'desodorante axe aerosol spray hombre deocolonia antitranspirante apollo musk dark temptation ice chill',
+        $v([['Apollo', 15.50], ['Musk', 15.50], ['Dark Temptation', 15.50], ['Ice Chill (efecto frío)', 15.50], ['Aqua Citrus', 18.90], ['Cherry Spritz', 18.90], ['Peach Infusion', 18.90]], 8),
+        1, ['axe-dark-temptation', 'axe-apollo', 'axe-musk', 'axe-ice-chill', 'axe-aqua-citrus', 'axe-cherry-spritz', 'axe-peach-infusion']];
+    $P[] = ['Desodorante Dove mujer', 'Dove', 'desodorantes',
+        "Antitranspirante Dove con 1/4 de crema humectante que cuida la piel de las axilas. Protección de 48 a 72 horas.",
+        'desodorante dove mujer aerosol roll on barra antitranspirante tono uniforme aclarante clinical',
+        $v([['Original — aerosol 150 ml', 15.90], ['Original — roll on 50 ml', 14.90], ['Clinical Tono Uniforme — aerosol 150 ml', 19.90],
+            ['Caléndula — barra 45 g', 14.90], ['Raspberry — aerosol', 15.90]]),
+        0, ['dove-original-aerosol', 'dove-original-rollon', 'dove-clinical-tono', 'dove-calendula-barra', 'dove-raspberry']];
+    $P[] = ['Desodorante Dove Men+Care', 'Dove', 'desodorantes',
+        "Antitranspirante para hombre Dove Men+Care: protección de 72 horas que cuida la piel.",
+        'desodorante dove men care hombre aerosol barra invisible dry proteccion total',
+        $v([['Invisible Dry — aerosol 150 ml', 17.90], ['Protección Total — aerosol 150 ml', 17.90], ['Invisible Dry — barra 50 g', 17.50]]),
+        0, ['dove-men-invisible', 'dove-men-proteccion', 'dove-men-barra']];
+    $P[] = ['Desodorante Rexona mujer aerosol', 'Rexona', 'desodorantes',
+        "Antitranspirante Rexona MotionSense: más movimiento, más protección (hasta 72 horas).",
+        'desodorante rexona mujer aerosol antitranspirante powder dry active emotion clinical invisible aclarado',
+        $v([['Active Emotion 150 ml', 13.90], ['Powder Dry 150 ml', 13.90], ['Antibacterial Invisible 150 ml', 13.90], ['Aclarado Perfecto 150 ml', 13.90],
+            ['Bamboo 175 ml', 13.90], ['Clinical Refresh 150 ml', 17.90]]),
+        0, ['rexona-active-emotion', 'rexona-powder-dry', 'rexona-antibacterial-invisible', 'rexona-aclarado', 'rexona-bamboo', 'rexona-clinical-refresh']];
+    $P[] = ['Desodorante Rexona Men aerosol 150 ml', 'Rexona', 'desodorantes',
+        "Antitranspirante Rexona Men MotionSense con protección de 72 horas.",
+        'desodorante rexona men hombre aerosol v8 xtra cool antibacterial forest',
+        $v([['V8', 15.50], ['Xtra Cool', 15.50], ['Antibacterial', 15.50], ['Forest', 15.50]], 8),
+        0, ['rexona-men-v8', 'rexona-men-xtra-cool', 'rexona-men-antibacterial', 'rexona-men-forest']];
+    $P[] = ['Desodorante Old Spice', 'Old Spice', 'desodorantes',
+        "Desodorante y antitranspirante para hombre Old Spice, con sus aromas clásicos.",
+        'desodorante old spice hombre aerosol spray barra original fresh wolfthorn bearglove pure sport',
+        $v([['Original — aerosol 150 ml', 16.50], ['Fresh — aerosol 150 ml', 16.50], ['Wolfthorn — aerosol 150 ml', 16.50], ['Bearglove — aerosol 150 ml', 16.50],
+            ['Pure Sport — barra 50 g', 16.50], ['Fresh — barra 50 g', 16.50], ['Dragonblast — barra 50 g', 16.50]]),
+        1, ['oldspice-original', 'oldspice-fresh', 'oldspice-wolfthorn', 'oldspice-bearglove', 'oldspice-pure-sport-barra', 'oldspice-fresh-barra', 'oldspice-dragonblast-barra']];
+
+    // ---------------- GELES ----------------
+    $P[] = ['Gel Moco de Gorila', 'Moco de Gorila', 'ceras-geles',
+        "Gel fijador de fijación extrema que mantiene el peinado todo el día. Punk (máxima fijación) y Gamer.",
+        'gel moco de gorila fijador fijacion extrema peinado punk gamer',
+        $v([['Punk 80 g', 11.00], ['Punk 270 g', 21.40], ['Punk 340 g', 24.80], ['Gamer 340 g', 19.80]], 8), 0, ['moco-punk', 'moco-gamer']];
+    $P[] = ['Gel Ego para hombre', 'Ego', 'ceras-geles',
+        "Gel para hombre Ego en varias fórmulas: Extreme Max (fijación máxima), Attraction, Vitamin+Care y Ultra Intense.",
+        'gel ego hombre fijador extreme max attraction vitamin ultra intense peinado',
+        $v([['Extreme Max 100 g', 5.90], ['Extreme Max 500 g', 18.50], ['Attraction 110 ml', 5.90], ['Attraction 500 ml', 18.50],
+            ['Vitamin+Care 110 ml', 5.90], ['Vitamin+Care 240 ml', 11.90], ['Vitamin+Care 500 ml', 18.50], ['Ultra Intense 110 ml', 5.90]], 8),
+        0, ['ego-extreme-max', 'ego-attraction', 'ego-vitamin', 'ego-ultra-intense']];
+
+    // ---------------- UÑAS CHERIMOYA (precios referenciales) ----------------
+    $ch = fn(string $name, string $desc, string $tags, array $variants, $img, int $featured = 0) =>
+        ["$name — Cherimoya", 'Cherimoya', 'unas', $desc . "\nProducto vegano, no testeado en animales.", "cherimoya uñas manicura nail $tags", $v($variants, 4), $featured, $img];
+    $P[] = $ch('Preparadores para uñas 15 ml', 'Preparadores esenciales: pH Balancing deshidrata y equilibra la uña, Ultrabond y Primer sin ácido mejoran la adherencia del esmaltado o la estructura.',
+        'preparador ph balancing ultrabond primer sin acido adherencia', [['pH Balancing Agent', 22.90], ['Ultrabond (sin ácido)', 22.90], ['Primer sin ácido', 22.90]], 'cherimoya-preparadores');
+    $P[] = $ch('Base y Top Coat soak off 15 ml', 'Base y selladores para esmaltado semipermanente y uñas esculpidas: brillo impecable y duradero. Top No-Cleanse sin capa pegajosa.',
+        'base coat top coat matte sellador semipermanente uv led no cleanse', [['Base Coat', 24.90], ['Top Coat No-Cleanse', 24.90], ['Matte Top Coat', 24.90], ['Base Aquarelle', 24.90]], 'cherimoya-base-top');
+    $P[] = $ch('Esmalte semipermanente UV/LED 15 ml', 'Más de 400 tonos. Pincel de 1000 cerdas para una aplicación fácil. Libre de tolueno y formaldehído. Escríbenos el código del color que quieres.',
+        'esmalte semipermanente gel uv led colores', [['Color a elegir (consulta el catálogo)', 24.90]], 'cherimoya-esmalte-15', 1);
+    $P[] = $ch('Esmalte semipermanente UV/LED 8 ml', 'Colores súper pigmentados de larga duración y brillo impactante en formato de 8 ml. Más de 500 tonos.',
+        'esmalte semipermanente gel uv led 8ml colores', [['Color a elegir (consulta el catálogo)', 15.90]], 'cherimoya-esmalte-8');
+    $P[] = $ch('CRMY Series', 'Línea avanzada: Velvet (top efecto terciopelo ultra matte), Reinforcement (reforzador y nivelador), Tempered Seal (top efecto vidrio templado) y Activation Repair (activador de color).',
+        'crmy velvet reinforcement tempered seal activation repair top', [['Velvet', 29.90], ['Reinforcement', 29.90], ['Tempered Seal', 29.90], ['Activation Repair', 29.90]], 'cherimoya-crmy');
+    $P[] = $ch('Powder Gel 50 ml', 'Polygel profesional de fácil aplicación y acabado impecable para estructuras. 24 tonos, con y sin glitter.',
+        'powder gel polygel estructura construccion', [['Clear', 39.90], ['Tono a elegir (24 tonos)', 39.90]], 'cherimoya-powder-gel');
+    $P[] = $ch('Solución Powder Gel (Slip Solution)', 'Líquido para moldear la perla de Powder Gel en la uña. Aroma agradable y no evapora rápido.',
+        'solucion powder gel slip solution polygel', [['Frasco', 24.90]], 'cherimoya-solucion');
+    $P[] = $ch('Acrylic Powder (polvo acrílico)', 'Acrílicos de alta gama con 100 % de cobertura, 12 colores incluidos tonos cover. Fácil aplicación y tiempos de activación adecuados.',
+        'acrilico polvo acrilico acrylic powder cover nude pink esculpidas',
+        [['Clear (cristal) 15 g', 22.90], ['Clear (cristal) 30 g', 34.90], ['White (blanco) 15 g', 22.90], ['Pink 15 g', 22.90], ['Nude Pink 15 g', 22.90],
+         ['Natural 15 g', 22.90], ['Ultra Nature 15 g', 22.90], ['Nude Diamonds 15 g', 22.90], ['Cover Shine Rose 15 g', 22.90], ['Cover Soft Beige 15 g', 22.90],
+         ['Cover Rose 15 g', 22.90], ['Cover Peach 15 g', 22.90], ['Beauty Tan 15 g', 22.90]], 'cherimoya-acrylic');
+    $P[] = $ch('Monómero de bajo olor', 'Líquido activador de los polvos acrílicos, indispensable para diseñar la estructura.',
+        'monomero liquido acrilico bajo olor', [['100 ml', 24.90], ['250 ml', 44.90], ['500 ml', 79.90], ['1 litro', 139.90]], 'cherimoya-monomero');
+    $P[] = $ch('Gel de construcción UV/LED', 'Gel para construir uñas en un solo color o manicura francesa, con camuflaje para uñas mordidas o estriadas.',
+        'gel construccion builder uv led esculpidas', [['Cristal 15 g', 24.90], ['Cristal 30 g', 39.90], ['Tono a elegir 15 g', 24.90], ['Tono a elegir 30 g', 39.90]], 'cherimoya-gel-construccion');
+    $P[] = $ch('Pinceles profesionales', 'Pinceles de cerdas sintéticas premium para gel, acrílico y powder gel (2 en 1), y pinceles de nail art y liner para decoración.',
+        'pincel pinceles gel acrilico powder gel nail art liner', [['Pincel para gel', 24.90], ['Pincel para acrílico', 34.90], ['Pincel powder gel 2 en 1', 29.90], ['Pincel nail art / liner', 14.90]], 'cherimoya-pinceles');
+    $P[] = $ch('Moldes para esculpir uñas', 'Moldes adhesivos premium para esculpir en cualquier material.',
+        'moldes uñas esculpir mariposa stiletto', [['Clásicos x 500', 34.90], ['Mariposa x 500', 34.90], ['Stiletto premium x 300', 29.90], ['XXL extremo', 29.90]], 'cherimoya-moldes');
+    $P[] = $ch('Limas zodiacales', 'Lima 2 en 1 (Zebra 100/180 y buffer sponge) con diseño exclusivo de cada signo zodiacal.',
+        'lima limas buffer pulidor zodiacal', [['Unidad', 4.90]], 'cherimoya-limas');
+    $P[] = $ch('Kit inicial de acrílico', 'Todo lo indispensable para empezar en el sistema de acrílico: ideal para estudiantes y técnicas que dan sus primeros pasos.',
+        'kit acrilico inicial estudiante principiante', [['Kit', 149.90]], 'cherimoya-kit-acrilico');
+    $P[] = $ch('Kit inicial de gel', 'Todo lo indispensable para empezar en el sistema de gel: ideal para estudiantes y técnicas que dan sus primeros pasos.',
+        'kit gel inicial estudiante principiante', [['Kit', 149.90]], 'cherimoya-kit-gel');
+
+    return $P;
+}
+
 /** Tras la tercera tanda: oculta los tintes genéricos de ejemplo de Palette y Evolution (si nunca se vendieron). */
 function catalogo_extra_3_after(PDO $pdo): void
 {
@@ -555,6 +651,7 @@ function import_catalogo_extra(PDO $pdo): void
         'aceite-para-maquina-bandido-200-ml' => 'catalogo_extra',
         'botx-mini-kit-capilar-lanosterin' => 'catalogo_extra_2',
         'fibra-kanekalon-para-trenzas-y-rastas-120-cm' => 'catalogo_extra_3',
+        'desodorante-axe-aerosol-150-ml' => 'catalogo_extra_4',
     ];
     $st = $pdo->prepare('SELECT 1 FROM products WHERE slug = ?');
     foreach ($batches as $sentinel => $fn) {
@@ -587,7 +684,8 @@ function import_catalogo_batch(PDO $pdo, array $list): void
         'ceras-geles' => ['Ceras y geles', 'jar'], 'barberia' => ['Barbería y afeitado', 'scissors'],
         'tintes-caja' => ['Tintes en caja', 'box'], 'cuidado-capilar' => ['Shampoo y cuidado capilar', 'bottle'],
         'tratamientos' => ['Tratamientos capilares', 'drop'], 'ampollas' => ['Ampollas', 'ampoule'],
-        'shampoo-matizador' => ['Shampoo matizador', 'bottle'], 'extensiones' => ['Extensiones', 'hair']];
+        'shampoo-matizador' => ['Shampoo matizador', 'bottle'], 'extensiones' => ['Extensiones', 'hair'],
+        'desodorantes' => ['Desodorantes', 'spark'], 'unas' => ['Uñas', 'spark']];
 
     $exists = $pdo->prepare('SELECT id FROM products WHERE slug = ?');
     $hasImg = $pdo->prepare('SELECT 1 FROM product_images WHERE product_id = ?');
