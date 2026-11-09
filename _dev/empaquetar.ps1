@@ -12,7 +12,7 @@ $n = 0
 try {
     Get-ChildItem $root -Recurse -Force -File | ForEach-Object {
         $rel = $_.FullName.Substring($root.Length + 1)
-        $skip = $rel -like '_dev\*' -or $rel -like '.git\*' -or $rel -like 'data\sessions\sess_*' -or $rel -in @('LEEME.md', 'README.md', '.gitignore', '.gitattributes') -or $rel -like 'data\*.sqlite*' -or ($rel -like 'uploads\*' -and $_.Name -ne '.htaccess')
+        $skip = $rel -like '_dev\*' -or $rel -like '.git\*' -or $rel -like 'data\sessions\sess_*' -or $rel -in @('LEEME.md', 'README.md', '.gitignore', '.gitattributes') -or $rel -like 'data\*.sqlite*' -or ($rel -like 'uploads\*' -and $_.Name -ne '.htaccess' -and $rel -notlike 'uploads\catalogo\*') -or $rel -like '_tmp\*'
         if (-not $skip) {
             # rutas con "/" para que Linux (Hostinger) las extraiga como carpetas
             [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $_.FullName, ($rel -replace '\\', '/'), 'Optimal') | Out-Null

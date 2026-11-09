@@ -20,8 +20,8 @@
 |---|---|---|
 | ✅ Terminado | 6 | HU-02, HU-03, HU-04, HU-05, HU-06, HU-07 |
 | 🔎 En revisión | 1 | HU-01 (espera aprobación de la Product Owner) |
-| 🔧 En progreso | 7 | HU-08, HU-09, HU-10, HU-15, HU-16, HU-17, HU-18 |
-| ⏳ Pendiente | 14 | HU-11 a HU-14, HU-19 a HU-28 |
+| 🔧 En progreso | 9 | HU-08, HU-09, HU-10, HU-13, HU-14, HU-15, HU-16, HU-17, HU-18 |
+| ⏳ Pendiente | 12 | HU-11, HU-12, HU-19 a HU-28 |
 
 ### ✅ Lo que ya está completado
 
@@ -48,6 +48,8 @@ Además ya están publicados: Términos y condiciones, Política de privacidad y
 | HU-16 Búsqueda con errores | 60 % (3/5) | Sinónimos, tolerancia a errores y registro de búsquedas sin resultado | Palabras clave reales y pruebas con clientas |
 | HU-17 Celular y rendimiento | 25 % (1/4) | Diseño revisado en celular (375 px) en 8 páginas | Pruebas con clientas, accesibilidad y tiempos de carga |
 | HU-18 Seguridad | 71 % (5/7) | Contraseñas cifradas, CSRF, carpetas privadas bloqueadas, HTTPS, claves fuera de GitHub | Revisión completa y copias de seguridad semanales |
+| HU-13 Fotos de productos | 50 % (2/4) | Fotos de catálogo para 70 productos, optimizadas a 800 px | Fotos propias del stand y reemplazar las de referencia de Bandido |
+| HU-14 Catálogo real | 60 % (3/5) | 70 productos nuevos de Ésika, Yanbal, Natura, Avon y Bandido con precios de campaña; categorías Maquillaje y Barbería | Revisar precios de Bandido y stock reales con la Product Owner |
 
 > El avance de cada historia es la proporción de sus tareas terminadas; el detalle está en cada issue de GitHub.
 
@@ -56,7 +58,7 @@ Además ya están publicados: Términos y condiciones, Política de privacidad y
 | Sprint | Historias pendientes |
 |---|---|
 | Sprint 2 (16 – 29 nov) | HU-11 Compras de prueba y paso a producción · HU-12 Correo de contacto real |
-| Sprint 3 (30 nov – 13 dic) | HU-13 Fotos reales · HU-14 Productos, precios y stock reales |
+| Sprint 3 (30 nov – 13 dic) | (HU-13 y HU-14 ya empezaron, ver arriba) |
 | Sprint 4 (14 – 27 dic) | HU-19 Corrección de errores · HU-20 Campaña navideña |
 | Sprint 5 (28 dic – 10 ene) | HU-21 SEO y Google · HU-22 Vista previa en redes · HU-23 Enlaces en redes y Google · HU-24 Reporte mensual |
 | Sprint 6 (11 – 24 ene) | HU-25 Mejora del asistente · HU-26 Capacitación y manual · HU-27 Informe final · HU-28 Entrega formal |
