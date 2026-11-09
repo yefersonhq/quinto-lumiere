@@ -466,17 +466,102 @@ function catalogo_extra_2(): array
     return $P;
 }
 
+/**
+ * Tercera tanda (noviembre 2026): fibra Kanekalon para trenzas y rastas, y las cartas de colores
+ * oficiales de Palette Intensive Color Creme (micolorpalette.com) y Alfaparf Evolution of the Color.
+ * Precios referenciales; la fibra a S/ 20 como pidió la tienda.
+ */
+function catalogo_extra_3(): array
+{
+    $P = [];
+
+    // ---------------- FIBRA KANEKALON ----------------
+    $P[] = ['Fibra Kanekalon para trenzas y rastas 120 cm', null, 'extensiones',
+        "Fibra sintética Kanekalon encrespada de 120 cm, ligera y con mucho volumen, para box braids, trenzas afro y rastas.\nSe trenza junto al cabello natural desde la raíz. Combina colores naturales y fantasía para degradados o destellos.\nPrecio por paquete. Para una cabeza completa se suelen usar de 4 a 6 paquetes: pregúntanos por WhatsApp.",
+        'kanekalon fibra sintetica trenzas rastas box braids trenzas africanas afro extensiones colores fantasia',
+        array_map(fn($c) => [$c[0], 20.00, 10, $c[1]], [
+            ['1 Negro', '#2d3138'], ['1B Negro natural', '#2a292e'], ['2 Castaño oscuro', '#3c373c'], ['4 Castaño', '#423c3b'],
+            ['6 Castaño claro', '#49332d'], ['8 Castaño medio', '#6a534a'], ['12 Rubio oscuro', '#93856d'], ['27 Rubio miel', '#9c7b4f'],
+            ['30 Cobre', '#b07d5d'], ['33 Caoba', '#643a27'], ['613 Rubio platino', '#eadfb1'], ['Burdeos', '#89404e'],
+            ['Rojo', '#e42d39'], ['Naranja', '#fa9a1c'], ['Amarillo', '#f6d157'], ['Rosa', '#ff6db5'],
+            ['Morado', '#5d3d73'], ['Verde', '#50941a'], ['Azul', '#3d45c3']]),
+        1, 'kanekalon-colores'];
+
+    // ---------------- PALETTE INTENSIVE COLOR CREME ----------------
+    // [código, nombre, color de la muestra oficial]
+    $pal = fn(array $t) => array_map(fn($x) => ["{$x[0]} {$x[1]}", 18.90, 6, $x[2]], $t);
+    $palDesc = "Tinte en crema Palette Intensive Color Creme de Schwarzkopf: color intenso hasta por 10 semanas y 100 % de cobertura de canas, con cuidado multi-protección.\nCaja lista para usar (crema colorante, revelador y tratamiento).";
+    $palTags = 'tinte palette schwarzkopf intensive color creme caja kit coloracion permanente canas';
+    $palImgs = fn(array $t) => array_map(fn($x) => 'palette-' . $x[0], $t);
+    $rubios = [['6-0', 'Rubio oscuro', '#493b30'], ['6-65', 'Rubio vainilla', '#5c4737'], ['7-0', 'Rubio medio', '#624e3a'], ['7-1', 'Rubio medio cenizo', '#534637'],
+        ['7-55', 'Rubio miel', '#624b38'], ['8-0', 'Rubio claro', '#947d59'], ['8-1', 'Rubio claro cenizo', '#7b6a58'], ['9-1', 'Rubio extra claro cenizo', '#ad9f86'],
+        ['9-65', 'Diosa rubio de oro', '#a28155'], ['10-1', 'Rubio plata cenizo', '#baad9d']];
+    $rojos = [['6-888', 'Rubí seductor', '#481c1b'], ['4-88', 'Castaño rojizo', '#412c2a'], ['4-89', 'Borgoña intenso', '#2e1c1d'], ['4-90', 'Violeta rojizo', '#301924'],
+        ['6-78', 'Rubio cobrizo oscuro', '#5f2e25'], ['6-88', 'Rubí', '#381713'], ['6-99', 'Violeta profundo', '#2e1924'], ['7-764', 'Rubio chocolate cobrizo', '#53230b'],
+        ['9-7', 'Rubio cobrizo', '#99502f']];
+    $castanos = [['5-68', 'Chocolate', '#482d1f'], ['3-0', 'Castaño oscuro', '#272018'], ['4-0', 'Castaño medio', '#322821'], ['5-0', 'Castaño claro', '#41362d'],
+        ['5-1', 'Castaño claro cenizo', '#605037'], ['5-60', 'Chocolate mocca', '#2e1c0e'], ['5-63', 'Castaño avellana', '#403528'], ['5-80', 'Chocolate cereza', '#2f1d10'],
+        ['6-460', 'Chocolate avellana', '#231810'], ['6-60', 'Chocolate deluxe', '#5d452a'], ['6-68', 'Chocolate claro', '#44291b']];
+    $negros = [['1-1', 'Negro azul', '#1c1d20'], ['1-0', 'Negro', '#1e1c16']];
+    foreach ([['Rubios', $rubios, 'rubio miel cenizo plata vainilla', 1], ['Rojos y violetas', $rojos, 'rojo rubi borgoña violeta cobrizo', 1],
+              ['Castaños y chocolates', $castanos, 'castaño chocolate avellana mocca', 0], ['Negros', $negros, 'negro negro azulado', 0]] as [$fam, $t, $tg, $ft]) {
+        $P[] = ["Tinte Palette Intensive Color Creme — $fam", 'Palette', 'tintes-caja', $palDesc, "$palTags $tg", $pal($t), $ft, $palImgs($t)];
+    }
+
+    // ---------------- ALFAPARF EVOLUTION OF THE COLOR ----------------
+    $alf = fn(array $codes, array $names = []) => array_map(fn($c) => [$names[$c] ?? tone_label($c), 45.90, 3, null], $codes);
+    $alfDesc = "Tinte profesional Alfaparf Milano Evolution of the Color (tubo 60 ml): fórmula con ácido hialurónico, sin PPD y con bajo amoníaco. Cobertura excepcional de canas y color de larga duración.\nMezcla 1:1.5 con Oxid'o Alfaparf. Pregúntanos el oxidante ideal para tu tono.";
+    $alfTags = 'tinte alfaparf evolution of the color profesional tubo coloracion permanente canas sin ppd peluqueria';
+    $alfImgs = ['alfaparf-tubo', 'alfaparf-carta'];
+    $P[] = ['Tinte Alfaparf Evolution of the Color — Naturales', 'Alfaparf Milano', 'tintes-caja', $alfDesc, "$alfTags naturales naturales intensos bahia",
+        $alf(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '4NB', '5NB', '6NB', '7NB', '8NB', '9NB', '10NB', '4NI', '5NI', '6NI', '7NI', '8NI', '9NI'],
+            ['4NB' => '4NB Castaño natural bahía', '5NB' => '5NB Castaño claro natural bahía', '6NB' => '6NB Rubio oscuro natural bahía', '7NB' => '7NB Rubio natural bahía',
+             '8NB' => '8NB Rubio claro natural bahía', '9NB' => '9NB Rubio muy claro natural bahía', '10NB' => '10NB Rubio extra claro natural bahía',
+             '4NI' => '4NI Castaño natural intenso', '5NI' => '5NI Castaño claro natural intenso', '6NI' => '6NI Rubio oscuro natural intenso',
+             '7NI' => '7NI Rubio natural intenso', '8NI' => '8NI Rubio claro natural intenso', '9NI' => '9NI Rubio muy claro natural intenso']), 1, $alfImgs];
+    $P[] = ['Tinte Alfaparf Evolution of the Color — Fríos: cenizos, irisados, nácar, arena y beige', 'Alfaparf Milano', 'tintes-caja', $alfDesc, "$alfTags ceniza cenizo irise irisado nacar mate arena beige iced coffee frio",
+        $alf(['6.01', '7.01', '8.01', '1.11', '5.1', '6.1', '7.1', '8.1', '9.1', '10.1', '9.2', '7.21', '8.21', '9.21', '10.21', '5.22', '8.221', '6.23', '8.23', '6.7',
+              '7.13', '8.13', '9.13', '7.31', '8.31', '9.31', '10.31'], ['6.7' => '6.7 Rubio oscuro mate', '8.221' => '8.221 Rubio claro Crystal Rose']), 0, $alfImgs];
+    $P[] = ['Tinte Alfaparf Evolution of the Color — Marrones: glacé, chocolate, tropicales y suedes', 'Alfaparf Milano', 'tintes-caja', $alfDesc, "$alfTags marron glace chocolate tropical suede castaño",
+        $alf(['4.32', '5.32', '6.32', '7.32', '8.32', '5.35', '6.35', '7.35', '5.53', '6.53', '7.53', '5.75', '6.15', '7.51', '8.05', '9.45', '10.05', '5.542', '7.24'],
+            ['5.542' => '5.542 Castaño claro Crystal Brown', '7.24' => '7.24 Rubio medio Crystal Brown']), 0, $alfImgs];
+    $P[] = ['Tinte Alfaparf Evolution of the Color — Dorados, cobres, caobas y rojos', 'Alfaparf Milano', 'tintes-caja', $alfDesc, "$alfTags dorado cobre cobrizo bronce caoba rojo pure reds cover reds",
+        $alf(['5.3', '6.3', '7.3', '8.3', '9.3', '10.3', '10.342', '6.4', '7.4', '7.43', '8.34', '8.4', '9.04', '9.423', '6.45', '7.45', '4.52', '5.5', '6.5', '6.562',
+              '5.62', '7.62', '4.65', '8.65', '4.66I', '5.66I', '6.66I', '7.66I', '8.66I', '5.6', '6.6', '7.6'],
+            ['4.66I' => '4.66I Castaño Pure Red', '5.66I' => '5.66I Castaño claro Pure Red', '6.66I' => '6.66I Rubio oscuro Pure Red',
+             '7.66I' => '7.66I Rubio Pure Red', '8.66I' => '8.66I Rubio claro Pure Red']), 1, $alfImgs];
+    $P[] = ['Tinte Alfaparf Evolution of the Color — Superaclarantes, harmonizer y correctores', 'Alfaparf Milano', 'tintes-caja', $alfDesc . "\nLos superaclarantes Platinum aclaran hasta 5 tonos.", "$alfTags superaclarante platinum harmonizer corrector booster grafito",
+        $alf(['11.00', '11.10', '11.11', '11.13', '11.02', '11.20', '11.21', '11.32', 'OSP', '01', '013', '02', '03', '410', '7000', '2000', 'RB', '000SSS'],
+            ['OSP' => 'OSP Super reforzador de aclaración', '01' => '01 Harmonizer ceniza', '013' => '013 Harmonizer arena', '02' => '02 Harmonizer irisado',
+             '03' => '03 Harmonizer dorado', '410' => '410 Grafito (atenúa rojos y naranjas)', '7000' => '7000 Azul (corrector)', '2000' => '2000 Violeta (corrector)',
+             'RB' => 'RB Red Booster', '000SSS' => '000SSS Reforzador de aclaración']), 0, $alfImgs];
+
+    return $P;
+}
+
+/** Tras la tercera tanda: oculta los tintes genéricos de ejemplo de Palette y Evolution (si nunca se vendieron). */
+function catalogo_extra_3_after(PDO $pdo): void
+{
+    foreach (['tinte-en-caja-palette-con-amoniaco', 'tinte-en-caja-evolution-con-amoniaco'] as $slug) {
+        $pdo->prepare('UPDATE products SET active = 0, updated_at = ? WHERE slug = ?
+                       AND NOT EXISTS (SELECT 1 FROM order_items o WHERE o.product_id = products.id)')->execute([now(), $slug]);
+    }
+}
+
 /** Inserta cada tanda del catálogo ampliado si aún no está (rápido: revisa un slug centinela por tanda). */
 function import_catalogo_extra(PDO $pdo): void
 {
     $batches = [
         'aceite-para-maquina-bandido-200-ml' => 'catalogo_extra',
         'botx-mini-kit-capilar-lanosterin' => 'catalogo_extra_2',
+        'fibra-kanekalon-para-trenzas-y-rastas-120-cm' => 'catalogo_extra_3',
     ];
     $st = $pdo->prepare('SELECT 1 FROM products WHERE slug = ?');
     foreach ($batches as $sentinel => $fn) {
         $st->execute([$sentinel]);
-        if (!$st->fetchColumn()) import_catalogo_batch($pdo, $fn());
+        if ($st->fetchColumn()) continue;
+        import_catalogo_batch($pdo, $fn());
+        if (function_exists($fn . '_after')) ($fn . '_after')($pdo);
     }
 }
 
@@ -502,34 +587,35 @@ function import_catalogo_batch(PDO $pdo, array $list): void
         'ceras-geles' => ['Ceras y geles', 'jar'], 'barberia' => ['Barbería y afeitado', 'scissors'],
         'tintes-caja' => ['Tintes en caja', 'box'], 'cuidado-capilar' => ['Shampoo y cuidado capilar', 'bottle'],
         'tratamientos' => ['Tratamientos capilares', 'drop'], 'ampollas' => ['Ampollas', 'ampoule'],
-        'shampoo-matizador' => ['Shampoo matizador', 'bottle']];
+        'shampoo-matizador' => ['Shampoo matizador', 'bottle'], 'extensiones' => ['Extensiones', 'hair']];
 
     $exists = $pdo->prepare('SELECT id FROM products WHERE slug = ?');
     $hasImg = $pdo->prepare('SELECT 1 FROM product_images WHERE product_id = ?');
     $insP = $pdo->prepare('INSERT INTO products (name, slug, brand_id, category_id, description, tags, featured, active, created_at, updated_at)
                            VALUES (?,?,?,?,?,?,?,1,?,?)');
     $insV = $pdo->prepare('INSERT INTO product_variants (product_id, label, sku, price, stock, sort, color) VALUES (?,?,?,?,?,?,?)');
-    $insI = $pdo->prepare('INSERT INTO product_images (product_id, path, sort) VALUES (?,?,0)');
+    $insI = $pdo->prepare('INSERT INTO product_images (product_id, path, sort) VALUES (?,?,?)');
 
     $pdo->beginTransaction();
     try {
         foreach ($list as [$name, $brandName, $catSlug, $desc, $tags, $variants, $featured, $img]) {
             $slug = slugify($name);
-            $path = "uploads/catalogo/$img.jpg";
+            // una foto o varias (galería): solo las que existen en uploads/catalogo
+            $paths = array_values(array_filter(array_map(fn($f) => "uploads/catalogo/$f.jpg", (array) $img), fn($p) => is_file(ROOT . '/' . $p)));
             $exists->execute([$slug]);
             if ($oldId = $exists->fetchColumn()) {
                 // Ya lo tenías: no se toca, solo se le pone foto si no tiene ninguna
                 $hasImg->execute([$oldId]);
-                if (!$hasImg->fetchColumn() && is_file(ROOT . '/' . $path)) $insI->execute([$oldId, $path]);
+                if (!$hasImg->fetchColumn() && $paths) $insI->execute([$oldId, $paths[0], 0]);
                 continue;
             }
             [$cn, $ci] = $catNames[$catSlug];
-            $insP->execute([$name, $slug, $brand($brandName), $cat($catSlug, $cn, $ci), $desc, $tags, $featured, now(), now()]);
+            $insP->execute([$name, $slug, $brandName ? $brand($brandName) : null, $cat($catSlug, $cn, $ci), $desc, $tags, $featured, now(), now()]);
             $pid = (int) $pdo->lastInsertId();
             foreach ($variants as $i => [$label, $price, $stock, $color]) {
                 $insV->execute([$pid, $label, strtoupper(substr($slug, 0, 10)) . '-' . ($i + 1), $price, $stock, $i, $color]);
             }
-            if (is_file(ROOT . '/' . $path)) $insI->execute([$pid, $path]);
+            foreach ($paths as $i => $p) $insI->execute([$pid, $p, $i]);
         }
         $pdo->commit();
     } catch (Throwable $e) {
