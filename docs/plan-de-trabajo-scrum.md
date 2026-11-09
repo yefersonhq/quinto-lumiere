@@ -48,8 +48,8 @@ Además ya están publicados: Términos y condiciones, Política de privacidad y
 | HU-16 Búsqueda con errores | 60 % (3/5) | Sinónimos, tolerancia a errores y registro de búsquedas sin resultado | Palabras clave reales y pruebas con clientas |
 | HU-17 Celular y rendimiento | 25 % (1/4) | Diseño revisado en celular (375 px) en 8 páginas | Pruebas con clientas, accesibilidad y tiempos de carga |
 | HU-18 Seguridad | 71 % (5/7) | Contraseñas cifradas, CSRF, carpetas privadas bloqueadas, HTTPS, claves fuera de GitHub | Revisión completa y copias de seguridad semanales |
-| HU-13 Fotos de productos | 50 % (2/4) | Fotos de catálogo para 70 productos, optimizadas a 800 px | Fotos propias del stand y reemplazar las de referencia de Bandido |
-| HU-14 Catálogo real | 60 % (3/5) | 70 productos nuevos de Ésika, Yanbal, Natura, Avon y Bandido con precios de campaña; categorías Maquillaje y Barbería | Revisar precios de Bandido y stock reales con la Product Owner |
+| HU-13 Fotos de productos | 50 % (2/4) | Fotos de catálogo para 107 productos, optimizadas a 800 px | Fotos propias del stand y reemplazar las de referencia de Bandido |
+| HU-14 Catálogo real | 60 % (3/5) | 107 productos nuevos (Ésika, Yanbal, Natura, Avon, Bandido, Kuul, Placenta Life, Hanna Caball y Lanosterin); categorías Maquillaje y Barbería | Revisar precios de Bandido y stock reales con la Product Owner |
 
 > El avance de cada historia es la proporción de sus tareas terminadas; el detalle está en cada issue de GitHub.
 

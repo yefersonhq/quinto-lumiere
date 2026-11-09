@@ -32,7 +32,7 @@ El proyecto se gestiona con **Scrum**: 6 sprints de 2 semanas (2 nov 2026 – 24
 `███░░░░░░░░░░░░░░░░░` **15 %** — 6 de 28 historias terminadas
 
 - ✅ **Completado:** diseño, catálogo y búsqueda, cuentas y carrito, panel de administración con roles, asistente Lumi y carta de colores, publicación con HTTPS y GitHub, páginas legales.
-- 🔧 **En progreso:** Mercado Pago (programado, faltan credenciales y pruebas), Google Analytics (programado, falta el ID), catálogo ampliado con 70 productos y fotos, logos de marcas, búsqueda, pruebas en celular, seguridad y copias de seguridad, aprobación de requisitos.
+- 🔧 **En progreso:** Mercado Pago (programado, faltan credenciales y pruebas), Google Analytics (programado, falta el ID), catálogo ampliado con 107 productos y fotos, logos de marcas, búsqueda, pruebas en celular, seguridad y copias de seguridad, aprobación de requisitos.
 - ⏳ **Falta:** compras de prueba, catálogo y fotos reales, corrección de errores, campaña navideña, SEO, redes, reportes, capacitación e informe final.
 
 Detalle completo en el [estado del proyecto](docs/plan-de-trabajo-scrum.md#estado-del-proyecto-actualizado-al-8-de-noviembre-de-2026).
