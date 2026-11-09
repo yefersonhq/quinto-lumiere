@@ -671,6 +671,111 @@ function catalogo_extra_5(): array
     return $P;
 }
 
+/**
+ * Sexta tanda: cartas oficiales de Color Flex, Issue y EstereoColor (color de cada muestra
+ * tomado de la carta de la marca) y oxidantes Lanosterin (Orlox, Orlox Herbal, Oxiten).
+ * Precios referenciales. La primera foto de cada tinte es una carta redibujada en alta calidad.
+ */
+function catalogo_extra_6(): array
+{
+    $t = fn(array $tones, float $price, int $stock = 12) => array_map(fn($x) => [trim("{$x[0]} {$x[1]}"), $price, $stock, $x[2]], $tones);
+    $P = [];
+
+    // ---------------- COLOR FLEX (sachet) ----------------
+    $cfDesc = "Coloración en crema Color Flex en sachet: color intenso, brillo y cobertura de canas.\nPregúntanos el oxidante ideal para tu tono.";
+    $cfTags = 'tinte color flex colorflex sachet coloracion crema permanente canas';
+    $P[] = ['Tinte Color Flex sachet — Naturales y cenizos', 'Color Flex', 'tintes-sachet', $cfDesc, "$cfTags naturales negro castaño rubio cenizo",
+        $t([['1N', 'Negro', '#0f0e16'], ['3N', 'Castaño oscuro', '#1e1b20'], ['4N', 'Castaño', '#2c191a'], ['5N', 'Castaño claro', '#4c3536'], ['6N', 'Rubio oscuro', '#523b3e'],
+            ['7N', 'Rubio mediano', '#513633'], ['8N', 'Rubio claro', '#795e50'], ['01', 'Negro azulado', '#2f2a44'], ['5.1', 'Castaño claro cenizo', '#32322f'],
+            ['6.1', 'Rubio oscuro cenizo', '#565245'], ['7.1', 'Rubio cenizo', '#43423a'], ['8.1', 'Rubio claro cenizo', '#888070'], ['9.1', 'Rubio muy claro cenizo', '#8d8873'],
+            ['6.10', 'Rubio oscuro cenizo intenso', '#4d4841'], ['7.10', 'Rubio cenizo intenso', '#32302a']], 4.50), 0, ['carta-colorflex-naturales']];
+    $P[] = ['Tinte Color Flex sachet — Chocolates, dorados y caobas', 'Color Flex', 'tintes-sachet', $cfDesc, "$cfTags chocolate dorado gold caoba mogano",
+        $t([['5.023', 'Chocolate intenso', '#34272b'], ['7.023', 'Chocolate intenso mediano', '#543939'], ['5.4CH', 'Chocolate', '#442c2e'], ['7.4CH', 'Chocolate mediano', '#492e2e'],
+            ['5.3D', 'Castaño claro dorado', '#543b3d'], ['7.3D', 'Rubio dorado', '#876658'], ['8.3D', 'Rubio claro dorado', '#af876a'], ['9.3D', 'Rubio muy claro dorado', '#b98f73'],
+            ['4.6M', 'Mogano oscuro', '#3c2329'], ['5.6M', 'Mogano', '#40242b'], ['6.6M', 'Mogano claro', '#512328']], 4.50), 0, ['carta-colorflex-chocolates']];
+    $P[] = ['Tinte Color Flex sachet — Rojos, violetas y matizadores', 'Color Flex', 'tintes-sachet', $cfDesc, "$cfTags rojo violeta rubi matizador verde azul",
+        $t([['5.66', 'Rojo pasión', '#7d272b'], ['6.66', 'Rojo intenso', '#8a262b'], ['7.66', 'Rojo fuego ardiente', '#762127'], ['6.62', 'Rubio rojo intenso nacarado', '#562a33'],
+            ['6.88', 'Rubí', '#6d2125'], ['Matizador', 'verde', '#3c604d'], ['Matizador', 'rojo', '#971d2e'], ['Matizador', 'azul', '#3a3972']], 4.50), 1, ['carta-colorflex-rojos']];
+
+    // ---------------- ISSUE (crema) ----------------
+    $isDesc = "Coloración en crema Issue: color brillante y duradero, con cobertura total de canas.\nPregúntanos el oxidante ideal para tu tono.";
+    $isTags = 'tinte issue coloracion crema permanente canas';
+    $P[] = ['Tinte Issue — Naturales y superintensos', 'Issue', 'tintes-caja', $isDesc, "$isTags naturales calidos frios neutro superintenso",
+        $t([['1', 'Negro', '#36373e'], ['3', 'Castaño oscuro', '#414047'], ['4', 'Castaño', '#544e51'], ['5', 'Castaño claro', '#3e3936'], ['6', 'Rubio oscuro', '#564e48'],
+            ['7', 'Rubio', '#6a5f54'], ['8', 'Rubio claro', '#7f7163'], ['9', 'Rubio muy claro', '#8f7e6d'], ['5N', 'Castaño claro neutro', '#403b38'],
+            ['6N', 'Castaño oscuro neutro', '#564c48'], ['7N', 'Rubio neutro', '#5a514c'], ['8N', 'Rubio claro neutro', '#7a6d5f'], ['9N', 'Rubio muy claro neutro', '#aa937f'],
+            ['5/0', 'Castaño claro intenso', '#483c32'], ['6/0', 'Rubio oscuro intenso', '#614d3c'], ['7/0', 'Rubio intenso', '#7a6149'], ['8/0', 'Rubio claro intenso', '#a38d69']], 12.90, 6),
+        0, ['carta-issue-naturales']];
+    $P[] = ['Tinte Issue — Dorados y marrones', 'Issue', 'tintes-caja', $isDesc, "$isTags dorado marron chocolate caoba",
+        $t([['5.3', 'Castaño claro dorado', '#5c4f49'], ['6.3', 'Rubio oscuro dorado', '#605049'], ['7.3', 'Rubio dorado', '#625147'], ['8.3', 'Rubio claro dorado', '#916f4d'],
+            ['8.33', 'Rubio claro dorado profundo', '#80664f'], ['9.3', 'Rubio muy claro dorado', '#c3ab89'], ['9.33', 'Rubio muy claro dorado profundo', '#c7ad84'],
+            ['5.85', 'Castaño claro chocolate caoba', '#40393d'], ['6.83', 'Rubio oscuro chocolate dorado', '#544540'], ['6.88', 'Rubio oscuro chocolate profundo', '#40332b'],
+            ['8.83', 'Rubio claro chocolate dorado', '#806650'], ['5.13', 'Castaño claro ceniza dorado', '#423b39'], ['6.13', 'Rubio oscuro ceniza dorado', '#564c49'],
+            ['7.31', 'Rubio dorado ceniza', '#625147'], ['8.31', 'Rubio claro dorado ceniza', '#917c70']], 12.90, 6), 0, ['carta-issue-dorados']];
+    $P[] = ['Tinte Issue — Rojos, cobres y violetas', 'Issue', 'tintes-caja', $isDesc, "$isTags rojo rojizo cobre cobrizo violeta viola irisado",
+        $t([['5.6', 'Castaño claro rojizo', '#5c4043'], ['6.66', 'Rubio oscuro rojizo profundo', '#572d32'], ['7.64', 'Rubio rojizo cobrizo', '#893d36'],
+            ['6.41', 'Rubio oscuro cobrizo ceniza', '#50413a'], ['6.43', 'Rubio oscuro cobrizo dorado', '#4b2e2e'], ['7.4', 'Rubio cobrizo', '#624c40'],
+            ['7.45', 'Rubio cobrizo caoba', '#724330'], ['8.4', 'Rubio claro cobrizo', '#7f5d45'], ['9.34', 'Rubio muy claro dorado cobrizo', '#9f7659'],
+            ['4.62', 'Castaño rojizo viola', '#463745'], ['5.20', 'Castaño claro viola intenso', '#42354b'], ['6.26', 'Rubio oscuro viola rojizo', '#563e43'],
+            ['7.62', 'Rubio rojizo irisado', '#503540'], ['8.2', 'Rubio claro viola', '#9c837b']], 12.90, 6), 1, ['carta-issue-rojos']];
+    $P[] = ['Tinte Issue — Cenizas, aclarantes y acentuadores', 'Issue', 'tintes-caja', $isDesc, "$isTags ceniza cenizo aclarante superaclarante acentuador mix",
+        $t([['5.1', 'Castaño claro ceniza', '#3e3835'], ['6.1', 'Rubio oscuro ceniza', '#564f49'], ['7.1', 'Rubio ceniza', '#6a5f54'], ['7.11', 'Rubio ceniza profundo', '#63594f'],
+            ['8.1', 'Rubio claro ceniza', '#7f7163'], ['8.11', 'Rubio claro ceniza profundo', '#776a5d'], ['9.1', 'Rubio muy claro ceniza', '#907f6e'],
+            ['9.11', 'Rubio muy claro ceniza profundo', '#867a6b'], ['10', 'Rubio extraclaro', '#cab799'], ['10.1', 'Rubio extraclaro ceniza', '#bcab9a'],
+            ['10.2', 'Rubio extraclaro irisado', '#9c8f8a'], ['10.3', 'Rubio extraclaro dorado', '#d8c1a1'], ['11', 'Superaclarante natural', '#c8b69d'],
+            ['11.1', 'Superaclarante ceniza', '#c5b9af'], ['11.2', 'Superaclarante irisado', '#aa9c92'], ['B', 'Blue accent mix', '#28305d'],
+            ['P', 'Perla accent mix', '#8b868e'], ['R', 'Red accent mix', '#79272f'], ['G', 'Green accent mix', '#44503c'], ['C', 'Copper accent mix', '#b36940']], 12.90, 6),
+        0, ['carta-issue-cenizas']];
+
+    // ---------------- ESTEREOCOLOR ----------------
+    $stDesc = "Coloración permanente en crema EstereoColor, fórmula italiana sin gluten. Disponible en kit y en sachet individual.\nPregúntanos el oxidante ideal para tu tono.";
+    $stTags = 'tinte stereo estereo color estereocolor sachet kit coloracion crema permanente canas';
+    $P[] = ['Tinte EstereoColor — Naturales, cenizas y aclarantes', 'Stereo Color', 'tintes-sachet', $stDesc, "$stTags naturales negro castaño rubio ceniza platino aclarante",
+        $t([['1', 'Negro', '#0b0b0b'], ['011', 'Negro azulado', '#0e1021'], ['3', 'Castaño oscuro', '#150c08'], ['4', 'Castaño', '#22150c'], ['5', 'Castaño claro', '#301f12'],
+            ['6', 'Rubio oscuro', '#3d2a1a'], ['7', 'Rubio', '#60472e'], ['8', 'Rubio claro', '#95815c'], ['9', 'Rubio muy claro', '#ad9c77'],
+            ['10', 'Aclarante', '#d7c7a2'], ['10.1', 'Platino', '#ccbea2'], ['513', 'Castaño claro ceniza dorado', '#221f18'], ['61', 'Rubio oscuro ceniza', '#3c2c1f'],
+            ['71', 'Rubio ceniza', '#5e4b3a'], ['81', 'Rubio claro ceniza', '#978769'], ['91', 'Rubio muy claro ceniza', '#aea085']], 4.90), 0, ['carta-stereo-naturales']];
+    $P[] = ['Tinte EstereoColor — Dorados, rojos, caobas, avellanas y grises', 'Stereo Color', 'tintes-sachet', $stDesc, "$stTags dorado rojo rojizo caoba avellana gris plata",
+        $t([['73', 'Rubio dorado', '#5f4226'], ['83', 'Rubio claro dorado', '#9e8057'], ['93', 'Rubio muy claro dorado', '#dcc390'], ['637', 'Rubio oscuro dorado cobrizo', '#472c20'],
+            ['923', 'Rubio muy claro dorado malva', '#906f50'], ['660', 'Rubio oscuro rojizo intenso', '#46031c'], ['562', 'Castaño claro rojizo irisado', '#2c1619'],
+            ['662', 'Rubio oscuro rojizo irisado', '#37081a'], ['663', 'Rubio oscuro caoba dorado', '#2d190d'], ['56', 'Castaño claro caoba', '#381718'],
+            ['54', 'Castaño claro avellana', '#381911'], ['64', 'Rubio oscuro avellana', '#3c190e'], ['1100', 'Gris plata', '#b5b5b5'], ['1101', 'Gris oscuro', '#727372']], 4.90),
+        0, ['carta-stereo-dorados']];
+    $P[] = ['Tinte EstereoColor fantasía — Funky Colors, Candy y Neón', 'Stereo Color', 'tintes-sachet',
+        "Coloración semipermanente de fantasía EstereoColor: Funky Colors intensos, Candy en tonos pastel y Neón que brilla con luz UV.\nPara mejores resultados aplícalos sobre cabello decolorado.",
+        "$stTags fantasia funky candy pastel neon fluo uv fucsia violeta azul verde rosa turquesa naranja amarillo",
+        $t([['Funky', 'Fucsia', '#b0186f'], ['Funky', 'Violeta', '#5a2a8a'], ['Funky', 'Rojo', '#6d1b2a'], ['Funky', 'Azul', '#2d3b72'], ['Funky', 'Verde', '#1b8b53'],
+            ['Funky', 'Rosa', '#ec73a3'], ['Funky', 'Turquesa', '#02a2a1'], ['Funky', 'Naranja', '#e17a42'], ['Candy', 'Rosa pastel', '#f7b2bb'], ['Candy', 'Lila pastel', '#a083d5'],
+            ['Candy', 'Turquesa pastel', '#38c4bc'], ['Neón', 'Amarillo fluo', '#e7d745'], ['Neón', 'Verde fluo', '#81c56a'], ['Neón', 'Fucsia fluo', '#e7619e'],
+            ['Neón', 'Naranja fluo', '#e26643']], 5.90, 8), 1, ['carta-stereo-fantasia']];
+
+    // ---------------- OXIDANTES LANOSTERIN ----------------
+    $vols = fn(array $vs, array $sizes) => array_merge(...array_map(fn($v) => array_map(fn($s) => ["$v vol — {$s[0]}", $s[1], 8, null], $sizes), $vs));
+    $P[] = ['Oxidante en crema Orlox — Lanosterin', 'Lanosterin', 'oxidantes',
+        "Oxidante en crema estabilizado y delicadamente perfumado: suaviza la fibra capilar, mantiene la concentración de su volumen por más tiempo y reduce la irritación por pH extremo.\n10 vol (3 %): deposita color · 20 vol (6 %): aclara 1 tono y cubre canas · 30 vol (9 %): aclara 2 tonos · 40 vol (12 %): aclara 3 tonos.",
+        'oxidante oxigenta agua oxigenada activador revelador peroxido orlox lanosterin lantech 10 20 30 40 volumenes',
+        $vols(['10', '20', '30', '40'], [['90 ml', 4.90], ['500 ml', 14.90], ['1000 ml', 24.90]]), 1, ['orlox', 'orlox-2']];
+    $P[] = ['Oxidante en crema Orlox Herbal — Lanosterin', 'Lanosterin', 'oxidantes',
+        "Oxidante en crema estabilizado con extracto de aloe vera: hidrata, da elasticidad a la fibra y protege el cuero cabelludo sensible. Recomendado para cabello maltratado por procesos químicos.",
+        'oxidante oxigenta agua oxigenada activador orlox herbal aloe vera cuero cabelludo sensible lanosterin',
+        array_merge([['10 vol — 1000 ml', 26.90, 6, null]], $vols(['20', '30'], [['90 ml', 5.50], ['500 ml', 16.90], ['1000 ml', 26.90]])), 0, ['orlox-herbal', 'orlox-herbal-2']];
+    $P[] = ['Oxidante en crema Oxiten — Lanosterin Lan Ten', 'Lanosterin', 'oxidantes',
+        "Oxidante en crema delicadamente perfumado de la línea Lan Ten Perfect Color: suaviza la fibra y mantiene su volumen por más tiempo.",
+        'oxidante oxigenta activador oxiten lan ten lanosterin sachet 20 30 volumenes',
+        [['20 vol — 100 ml', 4.90, 8, null], ['30 vol — 100 ml', 4.90, 8, null], ['20 vol — 1000 ml', 22.90, 6, null], ['30 vol — 1000 ml', 22.90, 6, null],
+         ['20 vol — caja 12 sachets x 50 ml', 19.90, 6, null]], 0, ['oxiten', 'oxiten-textura']];
+    return $P;
+}
+
+/** Tras la sexta tanda: oculta los sachets genéricos de ejemplo de Color Flex, Issue y Stereo (si nunca se vendieron). */
+function catalogo_extra_6_after(PDO $pdo): void
+{
+    foreach (['tinte-en-sachet-color-flex-con-amoniaco', 'tinte-en-sachet-issue-con-amoniaco', 'tinte-en-sachet-stereo-color-con-amoniaco'] as $slug) {
+        $pdo->prepare('UPDATE products SET active = 0, updated_at = ? WHERE slug = ?
+                       AND NOT EXISTS (SELECT 1 FROM order_items o WHERE o.product_id = products.id)')->execute([now(), $slug]);
+    }
+}
+
 /** Tras la quinta tanda: oculta el sachet genérico de ejemplo de Smoll con amoníaco (si nunca se vendió). */
 function catalogo_extra_5_after(PDO $pdo): void
 {
@@ -696,6 +801,7 @@ function import_catalogo_extra(PDO $pdo): void
         'fibra-kanekalon-para-trenzas-y-rastas-120-cm' => 'catalogo_extra_3',
         'desodorante-axe-aerosol-150-ml' => 'catalogo_extra_4',
         'tinte-smoll-keratina-argan-sachet-naturales' => 'catalogo_extra_5',
+        'tinte-color-flex-sachet-naturales-y-cenizos' => 'catalogo_extra_6',
     ];
     $st = $pdo->prepare('SELECT 1 FROM products WHERE slug = ?');
     foreach ($batches as $sentinel => $fn) {
@@ -729,7 +835,8 @@ function import_catalogo_batch(PDO $pdo, array $list): void
         'tintes-caja' => ['Tintes en caja', 'box'], 'cuidado-capilar' => ['Shampoo y cuidado capilar', 'bottle'],
         'tratamientos' => ['Tratamientos capilares', 'drop'], 'ampollas' => ['Ampollas', 'ampoule'],
         'shampoo-matizador' => ['Shampoo matizador', 'bottle'], 'extensiones' => ['Extensiones', 'hair'],
-        'desodorantes' => ['Desodorantes', 'spark'], 'unas' => ['Uñas', 'spark'], 'tintes-sachet' => ['Tintes en sachet', 'sachet']];
+        'desodorantes' => ['Desodorantes', 'spark'], 'unas' => ['Uñas', 'spark'], 'tintes-sachet' => ['Tintes en sachet', 'sachet'],
+        'oxidantes' => ['Oxidantes y activadores', 'bottle']];
 
     $exists = $pdo->prepare('SELECT id FROM products WHERE slug = ?');
     $hasImg = $pdo->prepare('SELECT 1 FROM product_images WHERE product_id = ?');
