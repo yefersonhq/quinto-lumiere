@@ -275,13 +275,213 @@ function catalogo_extra(): array
     return $P;
 }
 
-/** Inserta el catálogo ampliado si aún no está (rápido: revisa un solo slug centinela). */
+/**
+ * Segunda tanda (noviembre 2026): tintes Kuul (carta de colores oficial), Placenta Life / Be Natural,
+ * Hanna Caball y Lanosterin. Precios de Hanna y Lanosterin: tiendas peruanas (Kymsalons, Aruma);
+ * Kuul y Placenta Life: referenciales (sus catálogos no traen precio en soles).
+ */
+function catalogo_extra_2(): array
+{
+    $P = [];
+
+    // ---------------- KUUL COLOR SYSTEM (carta de colores oficial) ----------------
+    // [código, nombre, color de la muestra de la carta]
+    $kuul = fn(array $tones, float $price = 19.90, int $stock = 6) => array_map(fn($t) => ["{$t[0]} {$t[1]}", $price, $stock, $t[2]], $tones);
+    $kuulDesc = "Tinte en crema Kuul Color System, coloración permanente de cobertura total de canas y color duradero. Mezcla 1:1.5 con oxidante Kuul (10, 20, 30 o 40 vol. según el resultado que busques).\nPregúntanos por el oxidante y la mezcla ideal para tu tono en la carta de colores.";
+    $kuulTags = 'tinte kuul color system crema coloracion permanente canas tubo';
+    $P[] = ['Tinte Kuul Color System — Naturales', 'Kuul', 'tintes-caja', $kuulDesc, "$kuulTags naturales negro castaño rubio",
+        $kuul([['1', 'Negro', '#222936'], ['1A', 'Negro azulado', '#1d3036'], ['1V', 'Negro violeta', '#21253b'], ['2', 'Castaño extra oscuro', '#282627'],
+            ['3', 'Castaño oscuro', '#312f30'], ['4', 'Castaño', '#393736'], ['5', 'Castaño claro', '#372f2f'], ['6', 'Rubio oscuro', '#3b3730'],
+            ['7', 'Rubio', '#514839'], ['8', 'Rubio claro', '#63533f'], ['9', 'Rubio clarísimo', '#a68760'], ['10', 'Rubio extra claro', '#cdaf86']]), 1, 'kuul-naturales'];
+    $P[] = ['Tinte Kuul Color System — Cenizos, irisados y nacarados', 'Kuul', 'tintes-caja', $kuulDesc, "$kuulTags cenizo irisado nacarado matizado anticobrizo rubio frio",
+        $kuul([['5.1', 'Castaño claro cenizo', '#332d2e'], ['6.1', 'Rubio oscuro cenizo', '#3a332c'], ['7.1', 'Rubio cenizo', '#463d32'], ['8.1', 'Rubio claro cenizo', '#504a41'],
+            ['9.1', 'Rubio clarísimo cenizo', '#7a756f'], ['10.1', 'Rubio extra claro cenizo', '#afaba3'], ['6.11', 'Rubio oscuro cenizo intenso', '#343332'],
+            ['7.11', 'Rubio cenizo intenso', '#443c34'], ['8.11', 'Rubio claro cenizo intenso', '#554335'], ['9.11', 'Rubio clarísimo cenizo intenso', '#796a55'],
+            ['10.11', 'Rubio extra claro cenizo intenso', '#a5a197'], ['6.12', 'Rubio oscuro cenizo nacarado', '#3a332c'], ['7.12', 'Rubio cenizo nacarado', '#463d32'],
+            ['9.12', 'Rubio clarísimo cenizo nacarado', '#a68760'], ['6.22', 'Rubio oscuro nacarado intenso', '#625545'], ['7.22', 'Rubio nacarado intenso', '#685647'],
+            ['8.22', 'Rubio claro nacarado intenso', '#8b714d'], ['9.22', 'Rubio clarísimo nacarado intenso', '#8b7353'], ['10.22', 'Rubio extra claro nacarado intenso', '#bf9765'],
+            ['6.23', 'Rubio oscuro nacarado dorado', '#4a372c']]), 0, 'kuul-cenizos'];
+    $P[] = ['Tinte Kuul Color System — Cobres y rojos', 'Kuul', 'tintes-caja', $kuulDesc, "$kuulTags cobre cobrizo rojo rojizo intenso borgoña",
+        $kuul([['6.34', 'Rubio oscuro dorado cobrizo', '#55352f'], ['7.44', 'Rubio cobrizo intenso', '#82321e'], ['7.64', 'Rubio rojo cobrizo', '#902e23'],
+            ['4.65', 'Borgoña', '#3e2b30'], ['6.66', 'Rubio oscuro rojo intenso', '#621014'], ['7.62', 'Rubio rojo nacarado', '#641925'],
+            ['7.66', 'Rubio rojo intenso', '#7c1c1e'], ['8.62', 'Rubio claro rojo nacarado', '#841f2e'], ['8.66', 'Rubio claro rojo intenso', '#8b1f20'],
+            ['9.66', 'Rubio clarísimo rojo intenso', '#a82626']]), 1, 'kuul-cobres-rojos'];
+    $P[] = ['Tinte Kuul Color System — Chocolates, caobas y dorados', 'Kuul', 'tintes-caja', $kuulDesc, "$kuulTags chocolate moka capuchino latte caoba dorado miel",
+        $kuul([['5.31', 'Chocolate', '#3f3538'], ['7.31', 'Latte macchiato', '#5a4634'], ['5.45', 'Moka', '#4b3436'], ['7.35', 'Capuchino', '#53433a'],
+            ['5.5', 'Castaño claro caoba', '#422f2f'], ['7.5', 'Rubio caoba', '#592a2a'], ['7.3', 'Rubio dorado', '#543d2e'], ['8.3', 'Rubio claro dorado', '#926633'],
+            ['9.33', 'Rubio clarísimo dorado intenso', '#ce9e50'], ['10.31', 'Rubio extra claro dorado cenizo', '#b49066']]), 0, 'kuul-chocolates-dorados'];
+    $P[] = ['Tinte Kuul Color System — Superaclarantes', 'Kuul', 'tintes-caja',
+        "Superaclarantes Kuul para aclarar hasta 4 o 5 niveles sin decolorar. Úsalos con oxidante de 40 vol.\nEl 000 refuerza la aclaración de cualquier tono.",
+        "$kuulTags superaclarante aclarar platino rubio muy claro sin decolorar",
+        $kuul([['9.9', 'Rubio platino', '#c9c8c0'], ['902', 'Rubio ultra claro nacarado', '#e0d1c3'], ['000', 'Reforzador de la aclaración', '#e2e1db']]), 0, 'kuul-superaclarantes'];
+    $P[] = ['Tinte fantasía Kuul Funny Colors', 'Kuul', 'tintes-caja',
+        "Colores de fantasía Kuul Funny Colors, intensos y vibrantes. Para mejores resultados aplícalos sobre cabello decolorado.\nEl blanco sirve como diluyente para crear tonos pastel.",
+        'tinte fantasia kuul funny colors azul verde rosa violeta morado neon pastel colores vivos',
+        $kuul([['Azul', '', '#1f3880'], ['Azul océano', '', '#14263a'], ['Azul jeans', '', '#204b6a'], ['Azul celeste', '', '#2994a1'], ['Azul neón', '', '#1385be'],
+            ['Verde', '', '#117452'], ['Verde esmeralda', '', '#11aaa3'], ['Verde pera', '', '#9fad5c'], ['Verde neón', '', '#5eab41'],
+            ['Violeta', '', '#4f2d72'], ['Violeta neón', '', '#7855a6'], ['Magenta', '', '#bd3785'], ['Bugambilia', '', '#8d3881'], ['Rosa', '', '#c65ca7'],
+            ['Rosa neón', '', '#e047a1'], ['Coral', '', '#fc9887'], ['Rojo', '', '#d02d27'], ['Rojo rosado', '', '#961c4a'], ['Rojo violeta', '', '#531837'],
+            ['Naranja', '', '#d25723'], ['Amarillo neón', '', '#efd13b'], ['Plata', '', '#afb3a6'], ['Blanco titanio', '', '#a6abb5'], ['Blanco (diluyente)', '', '#e2e1db']], 22.90, 4), 1, 'kuul-funny-colors'];
+    // Funny Colors no tiene código: la etiqueta queda solo con el nombre
+    $last = count($P) - 1;
+    $P[$last][5] = array_map(fn($v) => [rtrim($v[0]), $v[1], $v[2], $v[3]], $P[$last][5]);
+
+    // ---------------- PLACENTA LIFE · BE NATURAL ----------------
+    $pl = fn(string $name, string $cat, string $desc, string $tags, array $variants, string $img, int $featured = 0) =>
+        ["$name — Placenta Life", 'Placenta Life', $cat, $desc, "placenta life be natural $tags", $variants, $featured, $img];
+    $P[] = $pl('Be Natural Gold Manzanilla', 'cuidado-capilar',
+        'Línea con extracto natural de manzanilla que aclara suavemente e ilumina el cabello rubio y castaño claro. Sin sal ni sulfatos.',
+        'manzanilla aclarante rubio iluminar shampoo acondicionador locion sin sal',
+        [['Shampoo aclarante 350 ml', 18.90, 6, null], ['Acondicionador 350 ml', 18.90, 6, null], ['Loción intensiva', 22.90, 4, null]], 'placenta-gold-manzanilla', 1);
+    $P[] = $pl('Be Natural Curly Monoi', 'cuidado-capilar',
+        'Línea para rizos con aceite de monoi: define, hidrata y controla el frizz.',
+        'rizos rizado ondas curly monoi definir frizz crema de peinar activador',
+        [['Shampoo', 18.90, 6, null], ['Mascarilla', 24.90, 4, null], ['Crema para peinar (styling cream)', 22.90, 4, null], ['Activador de rizos', 22.90, 4, null]], 'placenta-curly-monoi');
+    $P[] = $pl('Be Natural Virgin Coconut', 'cuidado-capilar',
+        'Línea con aceite de coco virgen que nutre e hidrata en profundidad el cabello seco.',
+        'coco aceite de coco hidratacion cabello seco mascarilla acondicionador',
+        [['Acondicionador', 18.90, 6, null], ['Mascarilla intensiva', 24.90, 4, null]], 'placenta-virgin-coconut');
+    $P[] = $pl('Be Natural Lisso Keratina', 'cuidado-capilar',
+        'Línea con keratina para cabello lacio y controlado. El termo protector alisante cuida el cabello del calor de la plancha y la secadora.',
+        'keratina lacio alisado liso termo protector plancha frizz',
+        [['Acondicionador', 18.90, 6, null], ['Acondicionador 1 litro', 42.90, 3, null], ['Termo protector alisante', 22.90, 4, null]], 'placenta-lisso-keratina');
+    $P[] = $pl('Be Natural Blue Berry protector de color', 'cuidado-capilar',
+        'Línea con arándano para cabello teñido: protege y prolonga el color. El desenredante facilita el peinado.',
+        'arandano blueberry cabello teñido protector de color shampoo desenredante',
+        [['Shampoo', 24.90, 5, null], ['Acondicionador', 24.90, 5, null], ['Desenredante protector de color', 22.90, 4, null]], 'placenta-blue-berry');
+    $P[] = $pl('Be Natural Hydra Macadamia', 'cuidado-capilar',
+        'Línea con aceite de macadamia que hidrata y controla el frizz.',
+        'macadamia hidratacion frizz mascarilla desenredante',
+        [['Mascarilla', 24.90, 4, null], ['Desenredante anti-frizz', 22.90, 4, null]], 'placenta-hydra-macadamia');
+    $P[] = $pl('Be Natural Nutri Quinua', 'cuidado-capilar',
+        'Línea con quinua que nutre y fortalece el cabello débil.',
+        'quinua nutricion fortalecer shampoo acondicionador',
+        [['Shampoo', 18.90, 6, null], ['Acondicionador', 18.90, 6, null]], 'placenta-nutri-quinua');
+    $P[] = $pl('Vital Placenta', 'cuidado-capilar',
+        'Línea con placenta vegetal que revitaliza y da fuerza al cabello.',
+        'placenta vegetal revitalizar fuerza shampoo acondicionador caida',
+        [['Shampoo', 18.90, 6, null], ['Acondicionador', 18.90, 6, null]], 'placenta-vital');
+    $P[] = $pl('Be Natural Repair Argán shampoo', 'cuidado-capilar',
+        'Shampoo con aceite de argán que repara el cabello maltratado.',
+        'argan reparacion cabello maltratado dañado shampoo',
+        [['Shampoo', 18.90, 6, null]], 'placenta-repair-argan');
+    $P[] = $pl('Be Natural Fresh Menta acondicionador', 'cuidado-capilar',
+        'Acondicionador refrescante con menta para cabello graso.',
+        'menta fresco cabello graso acondicionador',
+        [['Acondicionador', 18.90, 6, null]], 'placenta-fresh-menta');
+    $P[] = $pl('Shock Hidro Nutritivo', 'ampollas',
+        'Tratamiento de choque en ampollas que hidrata y nutre el cabello en una sola aplicación.',
+        'ampolla shock hidratacion nutricion tratamiento',
+        [['Caja de ampollas', 19.90, 6, null]], 'placenta-shock-hidro');
+
+    // ---------------- HANNA CABALL (precios Kymsalons) ----------------
+    $P[] = ['Hanna Caball Keratina & Biotina control caída', 'Hanna', 'cuidado-capilar',
+        'Línea con keratina y biotina para cabello frágil y desvitalizado: fortaleza, nutrición y brillo intenso. Control de caída, sin sal ni parabenos.',
+        'hanna caball keratina biotina caida anticaida fortalecer shampoo acondicionador sin sal',
+        [['Shampoo 400 ml', 52.80, 4, null], ['Acondicionador 400 ml', 52.80, 4, null], ['Shampoo 1000 ml', 95.04, 2, null], ['Acondicionador 1000 ml', 95.04, 2, null]],
+        1, 'hanna-keratina-biotina'];
+    $P[] = ['Hanna Caball Mascarilla intensiva Keratina & Biotina 400 g', 'Hanna', 'tratamientos',
+        'Mascarilla intensiva con keratina y biotina, control de caída. Sin sal ni parabenos.',
+        'hanna caball mascarilla keratina biotina caida tratamiento',
+        [['400 g', 57.60, 3, null]], 0, 'hanna-mascarilla-keratina'];
+    $P[] = ['Hanna Caball Ampolla intensiva Keratina & Biotina x 12', 'Hanna', 'ampollas',
+        'Caja de 12 ampollas de 13 ml con keratina y biotina para controlar la caída del cabello.',
+        'hanna caball ampolla ampollas keratina biotina caida tratamiento',
+        [['Caja x 12 (13 ml c/u)', 91.20, 2, null]], 0, 'hanna-ampolla-intensiva'];
+    $P[] = ['Hanna Caball Keratina bifásico 95 ml', 'Hanna', 'tratamientos',
+        'Reparador instantáneo bifásico con keratina: desenreda, da brillo y protege.',
+        'hanna caball bifasico keratina reparador desenredante brillo',
+        [['95 ml', 41.28, 3, null]], 0, 'hanna-bifasico'];
+    $P[] = ['Hanna Caball Gel máxima fijación Keratina & Biotina 150 ml', 'Hanna', 'ceras-geles',
+        'Gel de máxima fijación con keratina y biotina que fortalece mientras peina.',
+        'hanna caball gel fijacion keratina biotina peinado',
+        [['150 ml', 33.60, 4, null]], 0, 'hanna-gel-biotina'];
+    $P[] = ['Hanna Caball Tónico capilar intensivo 50 ml', 'Hanna', 'tratamientos',
+        'Loción tónica con keratina y biotina para controlar la caída del cabello.',
+        'hanna caball tonico locion caida anticaida keratina biotina',
+        [['50 ml', 48.00, 3, null]], 0, 'hanna-tonico-keratina'];
+    $P[] = ['Hanna Caball Men control anticaída', 'Hanna', 'cuidado-capilar',
+        'Línea para hombre con biotina y procapil contra la caída del cabello débil y frágil.',
+        'hanna caball men hombre caida anticaida biotina procapil shampoo locion',
+        [['Shampoo 400 ml', 52.80, 3, null], ['Loción 50 ml', 48.00, 3, null]], 0, 'hanna-men-anticaida'];
+    $P[] = ['Hanna Caball Shampoo control caspa y grasa 400 ml', 'Hanna', 'cuidado-capilar',
+        'Shampoo para cabello con caspa y grasa que también ayuda a controlar la caída.',
+        'hanna caball caspa grasa cabello graso shampoo',
+        [['400 ml', 52.80, 3, null]], 0, 'hanna-control-caspa'];
+
+    // ---------------- LANOSTERIN (precios Aruma) ----------------
+    $P[] = ['Lanosterin Keratin Essence', 'Lanosterin', 'cuidado-capilar',
+        'Línea con keratina que repara, suaviza y da brillo al cabello.',
+        'lanosterin keratin essence keratina shampoo acondicionador mascarilla brillo',
+        [['Shampoo 250 ml', 14.90, 8, null], ['Shampoo 1000 ml', 39.90, 4, null], ['Acondicionador 250 ml', 16.90, 8, null],
+         ['Acondicionador 1000 ml', 44.90, 4, null], ['Mascarilla 300 g', 24.90, 6, null]], 1, 'lanosterin-keratin-essence'];
+    $P[] = ['Lanosterin Nutrilan', 'Lanosterin', 'cuidado-capilar',
+        'Línea nutritiva con lanolina y keratina para cabello seco y maltratado.',
+        'lanosterin nutrilan nutricion lanolina keratina cabello seco shampoo acondicionador',
+        [['Shampoo con keratina 250 ml', 22.90, 6, null], ['Shampoo 1000 ml', 58.90, 3, null], ['Acondicionador 250 ml', 24.90, 6, null], ['Acondicionador 1000 ml', 59.90, 3, null]],
+        0, 'lanosterin-nutrilan'];
+    $P[] = ['Mascarilla Lanosterin 500 g', 'Lanosterin', 'tratamientos',
+        'Mascarilla capilar de 500 g: hidratante para cabello seco o reparadora para cabello dañado.',
+        'lanosterin mascarilla hidratante reparador tratamiento',
+        [['Hidratante', 39.90, 4, null], ['Reparador', 39.90, 4, null]], 0, 'lanosterin-mascarilla-500'];
+    $P[] = ['Mascarilla Lanosterin Keratin 300 g', 'Lanosterin', 'tratamientos',
+        'Mascarilla con keratina hidrolizada: Deep Care para reparar en profundidad o Color Care para proteger el color.',
+        'lanosterin mascarilla keratin deep care color care keratina cabello teñido',
+        [['Deep Care', 33.90, 4, null], ['Color Care', 33.90, 4, null]], 0, 'lanosterin-mascarilla-keratin-care'];
+    $P[] = ['Lanosterin Curly Hair para rizos', 'Lanosterin', 'cuidado-capilar',
+        'Línea para rizos: limpia, hidrata, define y da volumen sin frizz.',
+        'lanosterin rizos rizado curly hair activador mousse definir ondas',
+        [['Shampoo 300 ml', 33.90, 4, null], ['Mascarilla multibeneficios 300 g', 39.90, 4, null], ['Mousse foam 180 ml', 29.90, 4, null], ['Activador de rizos Wave 250 ml', 19.90, 6, null]],
+        0, 'lanosterin-curly-hair'];
+    $P[] = ['Ampollas capilares Lanosterin (caja x 4)', 'Lanosterin', 'ampollas',
+        'Caja de 4 ampollas de tratamiento intensivo. Elige la que necesita tu cabello.',
+        'lanosterin ampolla ampollas tratamiento caida placenta semilla de lino medula reestructurante',
+        [['SDL loción reestructurante', 18.90, 6, null], ['Loción a la médula', 18.90, 6, null], ['Semilla de lino aceite esencial', 18.90, 6, null],
+         ['Placenta Vita', 18.90, 6, null], ['Shock anticaída', 22.90, 6, null]], 0, 'lanosterin-ampollas'];
+    $P[] = ['Shampoo Lanosterin Profesional Silver 250 ml', 'Lanosterin', 'shampoo-matizador',
+        'Shampoo matizador violeta que neutraliza los tonos amarillos en cabello rubio, canoso o decolorado.',
+        'lanosterin silver matizador violeta morado amarillo rubio canas platinado',
+        [['250 ml', 29.90, 5, null]], 0, 'lanosterin-silver'];
+    $P[] = ['Protector térmico Lanosterin Thermic', 'Lanosterin', 'tratamientos',
+        'Protege el cabello del calor de la plancha y la secadora.',
+        'lanosterin thermic protector termico calor plancha secadora',
+        [['110 ml', 9.90, 6, null], ['250 ml', 19.90, 4, null]], 0, 'lanosterin-thermic'];
+    $P[] = ['Lanstyle Gotas de Cristal 30 ml — Lanosterin', 'Lanosterin', 'tratamientos',
+        'Serum de silicona que sella las puntas, da brillo inmediato y controla el frizz.',
+        'lanosterin gotas de cristal serum silicona brillo puntas frizz',
+        [['30 ml', 19.90, 6, null]], 0, 'lanosterin-gotas-cristal'];
+    $P[] = ['Gel Lanstyle Forte 180 g — Lanosterin', 'Lanosterin', 'ceras-geles',
+        'Gel fijador de fijación fuerte.',
+        'lanosterin gel lanstyle forte fijador fijacion peinado',
+        [['180 g', 9.90, 8, null]], 0, 'lanosterin-gel-forte'];
+    $P[] = ['Laca fijadora Lano Spray B 200 ml — Lanosterin', 'Lanosterin', 'ceras-geles',
+        'Laca en spray de fijación duradera.',
+        'lanosterin laca spray fijador lano spray',
+        [['200 ml', 26.90, 4, null]], 0, 'lanosterin-laca'];
+    $P[] = ['Botx mini kit capilar — Lanosterin', 'Lanosterin', 'tratamientos',
+        'Kit de tratamiento capilar efecto botox: shampoo 70 ml, acondicionador 70 ml y tratamiento 50 g.',
+        'lanosterin botox botx kit tratamiento reparacion',
+        [['Kit', 39.90, 4, null]], 0, 'lanosterin-botox-kit'];
+
+    return $P;
+}
+
+/** Inserta cada tanda del catálogo ampliado si aún no está (rápido: revisa un slug centinela por tanda). */
 function import_catalogo_extra(PDO $pdo): void
 {
-    $sentinel = 'aceite-para-maquina-bandido-200-ml';
+    $batches = [
+        'aceite-para-maquina-bandido-200-ml' => 'catalogo_extra',
+        'botx-mini-kit-capilar-lanosterin' => 'catalogo_extra_2',
+    ];
     $st = $pdo->prepare('SELECT 1 FROM products WHERE slug = ?');
-    $st->execute([$sentinel]);
-    if ($st->fetchColumn()) return;
+    foreach ($batches as $sentinel => $fn) {
+        $st->execute([$sentinel]);
+        if (!$st->fetchColumn()) import_catalogo_batch($pdo, $fn());
+    }
+}
+
+function import_catalogo_batch(PDO $pdo, array $list): void
+{
 
     $cat = function (string $slug, string $name, string $icon) use ($pdo): int {
         $s = $pdo->prepare('SELECT id FROM categories WHERE slug = ?');
@@ -299,7 +499,10 @@ function import_catalogo_extra(PDO $pdo): void
         return (int) $pdo->lastInsertId();
     };
     $catNames = ['perfumes' => ['Perfumes de catálogo', 'perfume'], 'maquillaje' => ['Maquillaje', 'jar'],
-        'ceras-geles' => ['Ceras y geles', 'jar'], 'barberia' => ['Barbería y afeitado', 'scissors']];
+        'ceras-geles' => ['Ceras y geles', 'jar'], 'barberia' => ['Barbería y afeitado', 'scissors'],
+        'tintes-caja' => ['Tintes en caja', 'box'], 'cuidado-capilar' => ['Shampoo y cuidado capilar', 'bottle'],
+        'tratamientos' => ['Tratamientos capilares', 'drop'], 'ampollas' => ['Ampollas', 'ampoule'],
+        'shampoo-matizador' => ['Shampoo matizador', 'bottle']];
 
     $exists = $pdo->prepare('SELECT id FROM products WHERE slug = ?');
     $hasImg = $pdo->prepare('SELECT 1 FROM product_images WHERE product_id = ?');
@@ -310,7 +513,7 @@ function import_catalogo_extra(PDO $pdo): void
 
     $pdo->beginTransaction();
     try {
-        foreach (catalogo_extra() as [$name, $brandName, $catSlug, $desc, $tags, $variants, $featured, $img]) {
+        foreach ($list as [$name, $brandName, $catSlug, $desc, $tags, $variants, $featured, $img]) {
             $slug = slugify($name);
             $path = "uploads/catalogo/$img.jpg";
             $exists->execute([$slug]);

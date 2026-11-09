@@ -35,7 +35,8 @@ $target = $tono !== '' ? tone_parse($tono) : null;
 $actual = max(1, min(10, (int) ($_GET['actual'] ?? 0))) ?: null;
 if (empty($_GET['actual'])) $actual = null;
 $tenido = ($_GET['tenido'] ?? 'no') === 'si';
-$canas = in_array($_GET['canas'] ?? 'no', ['no', 'poca', 'media', 'mucha'], true) ? $_GET['canas'] : 'no';
+$canas = (string) ($_GET['canas'] ?? 'no');
+if (!in_array($canas, ['no', 'poca', 'media', 'mucha'], true)) $canas = 'no';
 $advice = $target && $actual ? tone_advice($actual, $tenido, $canas, $target) : null;
 
 $matches = $target ? ($byCode[$target['code']] ?? []) : [];
