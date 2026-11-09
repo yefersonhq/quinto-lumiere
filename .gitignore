@@ -10,3 +10,4 @@ uploads/*
 
 # Paquete para el hosting
 *.zip
+_tmp/

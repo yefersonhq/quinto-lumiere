@@ -196,6 +196,8 @@ function migrate(PDO $pdo): void
 
     require_once __DIR__ . '/seed.php';
     seed_catalog($pdo);
+    require_once __DIR__ . '/catalogo-extra.php';
+    import_catalogo_extra($pdo);
 }
 
 /** Agrega columnas nuevas a bases de datos creadas con versiones anteriores. */
@@ -210,6 +212,9 @@ function upgrade(PDO $pdo): void
         }
         if (!$has) $pdo->exec("ALTER TABLE $table ADD COLUMN $col " . (is_mysql() ? $type : 'TEXT'));
     }
+    // Catálogo ampliado: se agrega una sola vez y no toca los productos existentes
+    require_once __DIR__ . '/catalogo-extra.php';
+    import_catalogo_extra($pdo);
 }
 
 /**
